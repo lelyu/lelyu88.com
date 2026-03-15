@@ -18,6 +18,8 @@ let rotation = [0, -20]
 let animationId = 0
 let isDragging = false
 let lastTime = 0
+let resizeObserver = null
+let worldData = null
 
 const visitedCountries = [
   { id: '156', name: 'China', description: 'Guangzhou - Grew up here', color: '#ef4444' },
@@ -61,14 +63,38 @@ function getColors() {
   return props.isDark ? darkModeColors : lightModeColors
 }
 
+function cancelAnimation() {
+  if (animationId) {
+    cancelAnimationFrame(animationId)
+    animationId = 0
+  }
+}
+
+function cleanup() {
+  cancelAnimation()
+  if (svg) {
+    svg.selectAll('*').interrupt()
+    svg.selectAll('*').remove()
+    svg.remove()
+    svg = null
+  }
+}
+
+async function fetchWorldData() {
+  if (worldData) return worldData
+  const data = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  worldData = data
+  return worldData
+}
+
 async function initGlobe() {
   if (!containerRef.value) return
+
+  cleanup()
 
   const width = containerRef.value.clientWidth
   const height = containerRef.value.clientHeight
   const size = Math.min(width, height)
-
-  d3.select(containerRef.value).select('svg').remove()
 
   svg = d3
     .select(containerRef.value)
@@ -110,9 +136,8 @@ async function initGlobe() {
     .attr('opacity', 0.3)
 
   try {
-    const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
-
-    if (!world) return
+    const world = await fetchWorldData()
+    if (!world || !svg) return
 
     const countries = feature(world, world.objects.countries)
 
@@ -167,7 +192,7 @@ async function initGlobe() {
 
 function animate(time) {
   time = time || 0
-  if (!isDragging) {
+  if (!isDragging && svg) {
     const delta = time - lastTime
     rotation[0] += delta * 0.005
     projection.rotate(rotation)
@@ -224,12 +249,19 @@ watch(() => props.isDark, updateColors)
 
 onMounted(() => {
   initGlobe()
-  window.addEventListener('resize', initGlobe)
+
+  resizeObserver = new ResizeObserver(() => {
+    initGlobe()
+  })
+  resizeObserver.observe(containerRef.value)
 })
 
 onUnmounted(() => {
-  cancelAnimationFrame(animationId)
-  window.removeEventListener('resize', initGlobe)
+  cleanup()
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
 })
 </script>
 
