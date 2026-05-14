@@ -82,43 +82,27 @@ function toggleDark() {
 
           <div class="space-y-8 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             <p>
-              Hi, I go by <strong>Lok</strong>. I am a software engineer currently based in Hong
-              Kong, working at the
+              Hi, I go by <strong>Lok</strong>. I build the interfaces that make AI feel real —
+              currently at
               <a href="https://cpii.hk/" target="_blank" class="link"
-                >Centre for Perceptual and Interactive Intelligence (CPII)</a
-              >.
+                >Centre for Perceptual and Interactive Intelligence</a
+              >, a Hong Kong AI research centre.
             </p>
 
             <p>
-              My journey has been a bit of a global tour. I grew up in <strong>Guangzhou</strong>,
-              spent five formative years in <strong>Massachusetts</strong> for university and early
-              work, and have now landed in the vibrant tech scene of Hong Kong.
+              I craft front-ends for <strong>AI agent applications</strong> — responsive, real-time,
+              and built to make machine intelligence feel human. My stack:
+              <strong>Vue.js</strong> and <strong>TypeScript</strong>.
             </p>
 
             <p>
-              I specialize in building the <strong>frontend for agentic AI applications</strong>.
-              While my expertise lies in crafting high-fidelity, responsive interfaces using
-              <strong>Vue.js</strong> and <strong>TypeScript</strong>, I am deeply interested in the
-              entire AI stack. Currently, I'm bridging the gap between design and logic by diving
-              into <strong>LangGraph</strong>, learning how to better orchestrate the backend agents
-              that power my UIs.
+              I'm relentless about performance. Recently I refactored legacy systems and delivered a
+              <span class="font-medium text-gray-900 dark:text-gray-100">10x speed boost</span>.
             </p>
 
             <p>
-              I obsess over performance and type safety. Recently, I implemented Strategy Design
-              Patterns to refactor legacy modules, achieving a
-              <span class="font-medium text-gray-900 dark:text-gray-100"
-                >10x increase in processing speed</span
-              >. I also enjoy the challenge of real-time interactions—wiring up WebSockets to stream
-              LLM responses seamlessly to the client.
-            </p>
-
-            <p>
-              I am a Class of 2024 graduate from
-              <a href="https://www.bc.edu/" target="_blank" class="link">Boston College</a>, where I
-              double-majored in <strong>Computer Science</strong> and <strong>Economics</strong>.
-              During my time in the US, I also enjoyed teaching advanced Python concepts to students
-              at <em>iCode</em>.
+              Studied <strong>Computer Science</strong> and <strong>Economics</strong> at
+              <a href="https://www.bc.edu/" target="_blank" class="link">Boston College</a>.
             </p>
 
             <div class="pt-4">
@@ -130,8 +114,7 @@ function toggleDark() {
               <ul class="flex flex-wrap gap-x-6 gap-y-2 text-base text-gray-600 dark:text-gray-400">
                 <li>Vue.js / TypeScript</li>
                 <li>Python (FastAPI)</li>
-                <li>Tailwind CSS</li>
-                <li>LangGraph (Learning)</li>
+                <li>Agentic AI Systems</li>
               </ul>
             </div>
           </div>
@@ -153,8 +136,7 @@ function toggleDark() {
               class="mt-10 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400 italic"
             >
               <span class="font-semibold not-italic block mb-1 dark:text-gray-200">P.S.</span>
-              If you are also in Hong Kong and enjoy outdoor activities (e.g., hiking on weekends),
-              feel free to reach out via LinkedIn.
+              Also in Hong Kong and into hiking? Reach out on LinkedIn.
             </div>
           </footer>
         </div>
